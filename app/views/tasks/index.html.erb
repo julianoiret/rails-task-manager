@@ -1,0 +1,20 @@
+<h1>My Tasks</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+  <li>
+    <% icon_class = task.completed ? "far fa-check-square" : "far fa-square" %>
+    <i class="<%= icon_class %>"></i>
+
+ <%= link_to task.title, task_path(task) %>
+ <%= link_to content_tag(:i, "", :class => "fas fa-trash"),
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "ADD A TASK", new_task_path(@task)%>
+
+
